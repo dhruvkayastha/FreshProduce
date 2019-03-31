@@ -1,6 +1,6 @@
-<?php 
+<?php
 require_once 'dbconnect.php';
-$id = $_COOKIE["user_id"]; 
+$id = $_COOKIE["user_id"];
 $query = "SELECT stock_id, crop_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id)
 WHERE user_id=$id";
 
@@ -16,43 +16,30 @@ while($row = mysqli_fetch_assoc($result)){
 ?>
 <html>
 <script>
+	var xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200) {
+			var str = this.responseText;
+			document.getElementById("result").innerHTML = str;
+		}
+
+	};
+
 	function addStock() {
-		// alert("Ajax");
-		var xmlhttp = new XMLHttpRequest();
-		
-		xmlhttp.onreadystatechange = function(){
-			if(this.readyState==4 && this.status==200) {
-				// var obj = JSON.parse(this.responseText);
-				var str = this.responseText;
-				document.getElementById("result").innerHTML = str;
-			}
-			
-		};
 		var crop_id = document.getElementById("crop_id").value;
-		// document.getElementById("add_result").innerHTML += crop_id;
 		var bb = document.getElementById("best_before").value;
-		// document.getElementById("add_result").innerHTML += bb; 
 		var qty = document.getElementById("quantity").value;
 		var price = document.getElementById("price").value;
-	
+
 		xmlhttp.open("POST", "add_stock.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var data = "func=add&crop_id="+crop_id+"&best_before=" + bb + "&quantity=" + qty + "&price=" +price;
 		xmlhttp.send(data);
 
 	}
+
 	function removeStock() {
-		// alert("Ajax");
-		var xmlhttp = new XMLHttpRequest();
-		
-		xmlhttp.onreadystatechange = function(){
-			if(this.readyState==4 && this.status==200) {
-				// var obj = JSON.parse(this.responseText);
-				var str = this.responseText;
-				document.getElementById("result").innerHTML = str;
-			}
-			
-		};
 		var stock = document.getElementById("stock_id").value;
 		console.log(stock);
 		xmlhttp.open("POST", "add_stock.php", true);
@@ -69,12 +56,13 @@ while($row = mysqli_fetch_assoc($result)){
 		<input type="date" name="best_before" id="best_before" required>
 		<input type="text" name="price" id="price" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Price" required>
 		<button type="button" onclick="addStock()">Add</button>
-	</form><br>
-	<br><br><br>
+	</form>
+	<br><br>
+	<br><br>
 	<form>
-		<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Stock ID to delete" required> 
+		<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Stock ID to delete" required>
 		<button type="button" onclick="removeStock()">Remove Stock</button>
 	</form>
 	<br><br>
-	<p name="result" id="result"></p>	
+	<p name="result" id="result"></p>
 </html>

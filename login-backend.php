@@ -1,11 +1,5 @@
 <?php
-/*
-$host = "localhost";
-$user = "USER_NAME";
-$dbpass = "PASSWORD";
-$dbname = "DB_NAME";
-$con = mysqli_connect($host,$user,$dbpass,$dbname);
-*/
+
 require_once 'dbconnect.php';
 
 $email_id = $_POST["email"];
