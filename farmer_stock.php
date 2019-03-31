@@ -1,20 +1,23 @@
 <?php
 require_once 'dbconnect.php';
+
 $id = $_COOKIE["user_id"];
-$query = "SELECT stock_id, crop_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id)
-WHERE user_id=$id";
+
+$query = "SELECT stock_id, crop_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id) WHERE user_id=$id";
 
 $result = mysqli_query($con, $query);
-// $row=mysqli_fetch_array($result);
 
+echo "Stock<br><br>";
 while($row = mysqli_fetch_assoc($result)){
     foreach($row as $cname => $cvalue){
-        print "$cvalue\t";
+        echo "$cvalue\t";
     }
-    print "<br>";
+    echo "<br>";
 }
+echo "<br><br>";
+
 ?>
-<html>
+
 <script>
 	var xmlhttp = new XMLHttpRequest();
 
@@ -36,12 +39,11 @@ while($row = mysqli_fetch_assoc($result)){
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var data = "func=add&crop_id="+crop_id+"&best_before=" + bb + "&quantity=" + qty + "&price=" +price;
 		xmlhttp.send(data);
-
 	}
 
 	function removeStock() {
 		var stock = document.getElementById("stock_id").value;
-		console.log(stock);
+
 		xmlhttp.open("POST", "add_stock.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var data = "func=rem&stock_id="+stock;
@@ -49,20 +51,26 @@ while($row = mysqli_fetch_assoc($result)){
 	}
 </script>
 
+<html>
+<head>
 	<title>Inventory | FreshProduce</title>
-	<form>
-		<input type="text" name="crop_id" id="crop_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID" required>
-		<input type="text" name="quantity" id="quantity" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Quantity" required>
-		<input type="date" name="best_before" id="best_before" required>
-		<input type="text" name="price" id="price" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Price" required>
-		<button type="button" onclick="addStock()">Add</button>
-	</form>
+</head>
+<body>
+	<input type="text" name="crop_id" id="crop_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID" required>
+	<input type="text" name="quantity" id="quantity" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Quantity" required>
+	<input type="date" name="best_before" id="best_before" required>
+	<input type="text" name="price" id="price" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Price" required>
+	<button type="button" onclick="addStock()">Add</button>
+
 	<br><br>
 	<br><br>
-	<form>
-		<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Stock ID to delete" required>
-		<button type="button" onclick="removeStock()">Remove Stock</button>
-	</form>
+
+	<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Stock ID to delete" required>
+	<button type="button" onclick="removeStock()">Remove Stock</button>
+
 	<br><br>
+
 	<p name="result" id="result"></p>
+
+</body>
 </html>

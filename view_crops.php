@@ -7,7 +7,7 @@ $query = "SELECT stock_id, crop_name, crop_type, quantity, best_before, price FR
 
 $result = mysqli_query($con, $query);
 
-echo "Crops<br><br>";
+echo "Stock<br><br>";
 while($row = mysqli_fetch_assoc($result)){
     foreach($row as $cname => $cvalue){
         echo "$cvalue\t";
@@ -31,7 +31,7 @@ echo "<br><br>";
 	};
 
 	function buyCrop() {
-		var crop = document.getElementById("crop_id").value;
+		var crop = document.getElementById("stock_id").value;
 		var qty = document.getElementById("qty").value;
 		xmlhttp.open("POST", "buy.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -42,10 +42,10 @@ echo "<br><br>";
 
 <html>
 <head>
-	<title>Crops | FreshProduce</title>
+	<title>Stock | FreshProduce</title>
 </head>
 <body>
-	<input type="text" name="crop_id" id="crop_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID" required>
+	<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID" required>
 	<input type="text" name="qty" id="qty" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 	<button onclick="buyCrop()">Buy Crop</button>
 
