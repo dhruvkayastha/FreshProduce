@@ -11,7 +11,7 @@
 		$stmt = $con->prepare("INSERT INTO stock (user_id, crop_id, quantity, best_before, price) VALUES (?, ?, ?, ?, ?)");
 		$stmt->bind_param("iiisi", $id, $_POST["crop_id"], $_POST["quantity"], $day1, $_POST["price"]);	
 	}
-	else {
+	else if($_POST["func"]=="rem"){
 		$stmt = $con->prepare("DELETE FROM stock WHERE stock_id=?");
 		$stmt->bind_param("i", $_POST["stock_id"]);
 	}
