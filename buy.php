@@ -7,6 +7,7 @@
 	{
 		die("Quantity should be a positive number");
 	}
+
 	$date = date('Y-m-d');
 
 	$id = $_COOKIE['user_id']; 
@@ -31,6 +32,7 @@
 			{
 				$cost = $row["price"]*$_POST["qty"];
 				$seller_id = $row["user_id"];
+				$crop_id_sold = $row["crop_id"];
 				$stmt->close();
 				$new_quantity = $row["quantity"] - $_POST["qty"];
 				if($new_quantity == 0)
@@ -61,6 +63,32 @@
 				$stmt2 = $con->prepare("INSERT INTO transcrop VALUES (?, ?, ?)");
 				$stmt2->bind_param("iii", $last_id, $_POST["stock_id"], $_POST["qty"]);
 				$rc = $stmt2->execute();
+				$stmt2->close();
+
+				$stmt = $con->prepare("SELECT * FROM requirements WHERE user_id=? AND crop_id=?");
+				$stmt->bind_param("ii", $id, $crop_id_sold);
+				$rc = $stmt->execute();
+				$result = $stmt->get_result();
+
+				if($result->num_rows == 1)
+				{
+					$row = $result->fetch_assoc();
+					$new_quantity = $row["quantity"] - $_POST["qty"];
+					$stmt->close();
+					if($new_quantity > 0)
+					{
+						$stmt = $con->prepare("UPDATE requirements SET quantity=? WHERE user_id=? AND crop_id=?");
+						$stmt->bind_param("iii", $new_quantity, $id, $crop_id_sold);
+						$rc = $stmt->execute();
+					}
+					else
+					{
+						$stmt = $con->prepare("DELETE FROM requirements WHERE user_id=? AND crop_id=?");
+						$stmt->bind_param("ii", $id, $crop_id_sold);
+						$rc = $stmt->execute();
+					}
+				}
+
 				echo "Transaction Complete";				
 			}
 		}
