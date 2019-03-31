@@ -35,7 +35,7 @@ echo "<br><br>";
 		var qty = document.getElementById("qty").value;
 		xmlhttp.open("POST", "buy.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		var data = "func=crop&crop_id="+crop+"&qty="+qty;
+		var data = "func=crop&stock_id="+crop+"&qty="+qty;
 		xmlhttp.send(data);
 	}
 </script>
