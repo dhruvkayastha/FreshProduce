@@ -14,6 +14,9 @@
 	</a> <br>
 	<a href="view_prod_serv.php">
 		<button>Buy Products & Services</button>
+	</a> <br>
+	<a href="view_requirements.php">
+		<button>View Market Requirements</button>
 	</a>
 </body>
 </html>
