@@ -8,6 +8,8 @@ $queryServ = "SELECT service_id, service_name, tier, cost, name, phone_no, descr
 $resultProd = mysqli_query($con, $queryProd);
 $resultServ = mysqli_query($con, $queryServ);
 
+
+$con->close();
 // $row=mysqli_fetch_array($result);
 
 echo "Products<br><br>";
@@ -30,19 +32,19 @@ echo "<br><br>";
 ?>
 
 <script type="text/javascript">
-	function buyProd() {
-		// alert("Ajax");
-		var xmlhttp = new XMLHttpRequest();
+	var xmlhttp = new XMLHttpRequest();
 		
-		xmlhttp.onreadystatechange = function(){
-			if(this.readyState==4 && this.status==200) {
-				var str = this.responseText;
-				alert(str);
-				document.getElementById("result").innerHTML += str;
-			}
-		};
+	xmlhttp.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200) {
+			var str = this.responseText;
+			alert(str);
+			document.getElementById("result").innerHTML += str;
+		}
+	};
+
+	function buyProd() {
 		var prod = document.getElementById("prod_id").value;
-		var qty = document.getElementById("qty").value;
+		var qty = document.getElementById("qty1").value;
 		xmlhttp.open("POST", "buy.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var data = "func=prod&prod_id="+prod+"&qty="+qty;
@@ -50,19 +52,19 @@ echo "<br><br>";
 	}
 	function buyServ() {
 		// alert("Ajax");
-		var xmlhttp = new XMLHttpRequest();
+		// var xmlhttp = new XMLHttpRequest();
 		
-		xmlhttp.onreadystatechange = function(){
-			if(this.readyState==4 && this.status==200) {
-				// var obj = JSON.parse(this.responseText);
-				var str = this.responseText;
-				alert(str);
-				document.getElementById("result").innerHTML = str;
-			}
+		// xmlhttp.onreadystatechange = function(){
+		// 	if(this.readyState==4 && this.status==200) {
+		// 		// var obj = JSON.parse(this.responseText);
+		// 		var str = this.responseText;
+		// 		alert(str);
+		// 		document.getElementById("result").innerHTML = str;
+		// 	}
 			
-		};
+		// };
 		var serv = document.getElementById("serv_id").value;
-		var qty = document.getElementById("qty").value;
+		var qty = document.getElementById("qty2").value;
 		xmlhttp.open("POST", "buy.php", true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var data = "func=serv&serv_id="+serv+"&qty="+qty;
@@ -75,17 +77,13 @@ echo "<br><br>";
 	<title>Products & Services | FreshProduce</title>
 </head>
 <body>
-	<form>
 		<input type="text" name="prod_id" id="prod_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Product ID" required>
-		<input type="text" name="qty" id="qty" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
+		<input type="text" name="qty1" id="qty1" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 		<button onclick="buyProd()">Buy Product</button>
-	</form>
 	<br><br>
-	<form>
 		<input type="text" name="serv_id" id="serv_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Service ID" required>
-		<input type="text" name="qty" id="qty" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
+		<input type="text" name="qty2" id="qty2" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 		<button onclick="buyServ()">Buy Product</button>
-	</form>
 	<br><br><p id="result"></p>
 </body>
 </html>

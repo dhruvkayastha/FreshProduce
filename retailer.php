@@ -12,5 +12,8 @@
 	<a href="view_crops.php">
 		<button>Buy Crops</button>
 	</a>
+	<a href="retailer_requirement.php">
+		<button>View Requirements</button>
+	</a>	
 </body>
 </html>

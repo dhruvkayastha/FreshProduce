@@ -24,7 +24,7 @@
 		else {
 			$row=$result->fetch_assoc();
 			$cost = $row["cost"]*$_POST["qty"];
-			$seller_id = $row["serv_id"];
+			$seller_id = $row["user_id"];
 			$stmt->close();
 			$stmt = $con->prepare("INSERT INTO transaction (seller_id, buyer_id, trans_date, total_cost) VALUES (?, ?, ?, ?)");
 			$stmt->bind_param("iisi", $seller_id, $id, $date, $cost);
