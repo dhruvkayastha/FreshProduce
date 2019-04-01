@@ -1,19 +1,37 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
+
 <?php
 require_once 'dbconnect.php';
 $id = $_COOKIE["user_id"];
 $query = "SELECT crop_id, crop_name, crop_type, quantity FROM requirements JOIN crops USING(crop_id)
-WHERE user_id=$id";
+WHERE user_id=$id ORDER BY crop_id ASC";
 
 $result = mysqli_query($con, $query);
 // $row=mysqli_fetch_array($result);
 
-while($row = mysqli_fetch_assoc($result)){
-    foreach($row as $cname => $cvalue){
-        print "$cvalue\t";
-    }
-    print "<br>";
-}
+echo "<br>Your Requirements<br><br>";
+echo "<table>";
+	echo "<tr><th>Crop ID</th><th>Crop Name</th><th>Crop Type</th><th>Quantity</th></tr>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo "<tr>";
+	    foreach($row as $cname => $cvalue)
+	    {
+	        echo "<td>$cvalue</td>";
+	    }
+	    echo "</tr>";
+	}
+echo "</table><br><br>";
 ?>
+
 <html>
 <script>
 	var xmlhttp = new XMLHttpRequest();

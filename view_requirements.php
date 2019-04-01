@@ -4,6 +4,15 @@
 </head>
 <body>
 
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
 
 <?php
 	require_once 'dbconnect.php';
@@ -18,16 +27,22 @@
 			}
 		}
 
-	echo "Requirements<br><br>";
+	echo "<br>Requirements<br><br>";
 	$result = mysqli_query($con, $query);
 	if($result!==false)
 	{
-		while($row = mysqli_fetch_assoc($result)){
-	    	foreach($row as $cname => $cvalue){
-	        	echo "$cvalue\t";
-	    	}
-	    	echo "<br>";
-		}
+		echo "<table>";
+			echo "<tr><th>Stock ID</th><th>Crop Name</th><th>Crop Type</th><th>Quantity</th></tr>";
+			while($row = mysqli_fetch_assoc($result))
+			{
+				echo "<tr>";
+			    foreach($row as $cname => $cvalue)
+			    {
+			        echo "<td>$cvalue</td>";
+			    }
+			    echo "</tr>";
+			}
+		echo "</table><br><br>";
 	}
 	else
 	{

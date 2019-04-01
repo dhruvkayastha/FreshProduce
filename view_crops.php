@@ -4,13 +4,22 @@
 </head>
 <body>
 
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
 
 <?php
 require_once 'dbconnect.php';
 
 $id = $_COOKIE["user_id"];
 
-$query = "SELECT stock_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id) WHERE 1=1 ";
+$query = "SELECT stock_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id) WHERE 1=1 ORDER BY stock_id ASC";
 
 foreach ($_GET as $key => $value)
 	{
@@ -22,14 +31,19 @@ foreach ($_GET as $key => $value)
 
 $result = mysqli_query($con, $query);
 
-echo "Stocks<br><br>";
-while($row = mysqli_fetch_assoc($result)){
-    foreach($row as $cname => $cvalue){
-        echo "$cvalue\t";
-    }
-    echo "<br>";
-}
-echo "<br><br>";
+echo "<br>Stocks<br><br>";
+echo "<table>";
+	echo "<tr><th>Stock ID</th><th>Crop Name</th><th>Crop Type</th><th>Quantity</th><th>Date</th><th>Price</th></tr>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo "<tr>";
+	    foreach($row as $cname => $cvalue)
+	    {
+	        echo "<td>$cvalue</td>";
+	    }
+	    echo "</tr>";
+	}
+echo "</table><br><br>";
 ?>
 
 <form action="?" method="get">

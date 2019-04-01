@@ -1,31 +1,59 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
+
 <?php
 require_once 'dbconnect.php';
 
 $id = $_COOKIE["user_id"];
 
-$query = "SELECT stock_id, crop_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id) WHERE user_id=$id";
+$query = "SELECT stock_id, crop_id, crop_name, crop_type, quantity, best_before, price FROM stock JOIN crops USING(crop_id) WHERE user_id=$id ORDER BY stock_id ASC";
 
 $result = mysqli_query($con, $query);
 
-echo "Stock<br><br>";
-while($row = mysqli_fetch_assoc($result)){
-    foreach($row as $cname => $cvalue){
-        echo "$cvalue\t";
-    }
-    echo "<br>";
-}
-echo "<br><br>";
+echo "<br>Your Stock<br><br>";
+echo "<table>";
+	echo "<tr><th>Stock ID</th><th>Crop ID</th><th>Crop Name</th><th>Crop Type</th><th>Quantity</th><th>Date</th><th>Price</th></tr>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo "<tr>";
+	    foreach($row as $cname => $cvalue)
+	    {
+	        echo "<td>$cvalue</td>";
+	    }
+	    echo "</tr>";
+	}
+echo "</table><br><br>";
+
+// while($row = mysqli_fetch_assoc($result))
+// {
+//     foreach($row as $cname => $cvalue)
+//     {
+//         echo "$cvalue\t";
+//     }
+//     echo "<br>";
+// }
+// echo "<br><br>";
 
 ?>
 
 <script>
 	var xmlhttp = new XMLHttpRequest();
 
-	xmlhttp.onreadystatechange = function(){
-		if(this.readyState==4 && this.status==200) {
+	xmlhttp.onreadystatechange = function()
+	{
+		if(this.readyState==4 && this.status==200) 
+		{
 			var str = this.responseText;
 
-			function redirectPost(url, data) {
+			function redirectPost(url, data) 
+			{
 			    var form = document.createElement('form');
 			    document.body.appendChild(form);
 			    form.method = 'post';
@@ -52,7 +80,8 @@ echo "<br><br>";
 
 	};
 
-	function addStock() {
+	function addStock() 
+	{
 		var crop_id = document.getElementById("crop_id").value;
 		var bb = document.getElementById("best_before").value;
 		var qty = document.getElementById("quantity").value;
@@ -64,7 +93,8 @@ echo "<br><br>";
 		xmlhttp.send(data);
 	}
 
-	function removeStock() {
+	function removeStock() 
+	{
 		var stock = document.getElementById("stock_id").value;
 
 		xmlhttp.open("POST", "add_stock.php", true);

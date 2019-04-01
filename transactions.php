@@ -7,6 +7,7 @@ th, td {
 	padding: 5px;
 }
 </style>
+
 <?php
 	require_once 'dbconnect.php';
 
@@ -20,6 +21,7 @@ th, td {
 
 	if($_GET["type"]=="producer")
 	{
+		echo "<br>Your Transactions<br><br>";
 		$stmt = $con->prepare("SELECT name AS buyer_name, prod_name, quantity, cost, total_cost, trans_date FROM user 
 			JOIN transaction ON (buyer_id=user.user_id) 
 		  	JOIN transprod ON (transprod.trans_id=transaction.trans_id) WHERE seller_id=?
@@ -72,6 +74,7 @@ th, td {
 	}
 	else if($_GET["type"]=="retailer")
 	{
+		echo "<br>Your Transactions<br><br>";
 		$stmt = $con->prepare("SELECT name AS seller_name, crop_name, crop_type, quantity, price, total_cost, best_before, trans_date FROM user 
 			JOIN transaction ON (seller_id=user.user_id) 
 		  	JOIN transcrop ON (transcrop.trans_id=transaction.trans_id)
@@ -103,6 +106,7 @@ th, td {
 	{
 		if($_GET["view"]=="crops")
 		{
+			echo "<br>Your Transactions<br><br>";
 			$stmt = $con->prepare("SELECT name AS buyer_name, crop_name, crop_type, quantity, price, total_cost, best_before, trans_date FROM user 
 			JOIN transaction ON (buyer_id=user.user_id) 
 		  	JOIN transcrop ON (transcrop.trans_id=transaction.trans_id)
@@ -132,6 +136,7 @@ th, td {
 		}
 		else if($_GET["view"]=="products")
 		{
+			echo "<br>Your Transactions<br><br>";
 			$stmt = $con->prepare("SELECT name AS seller_name, prod_name, quantity, cost, total_cost, trans_date FROM user 
 				JOIN transaction ON (seller_id=user.user_id) 
 			  	JOIN transprod ON (transprod.trans_id=transaction.trans_id) WHERE buyer_id=?
@@ -160,6 +165,7 @@ th, td {
 		}
 		else if($_GET["view"]=="services")
 		{
+			echo "<br>Your Transactions<br><br>";
 			$stmt = $con->prepare("SELECT name AS seller_name, service_name, quantity, tier, cost, description, total_cost, trans_date FROM user 
 				JOIN transaction ON (seller_id=user.user_id) 
 			  	JOIN transservice ON (transservice.trans_id=transaction.trans_id) WHERE buyer_id=?
