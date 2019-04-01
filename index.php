@@ -50,10 +50,9 @@
 				<input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required>
 			</div>
 				<input type="submit" class="submit1" value="Login" /> 
-		</div>
 		</form> 
-		
 		</div>
+		
 		<div class="fb-body">
 		<div id="img2" class="fb-body"><!-- <img src="world.png" /> --></div>
 		<div id="form3" class="fb-body">
@@ -73,6 +72,7 @@
 				<input type="submit" class="button2" value="Sign Up" />
 				<!-- <button type="submit" name="signup" onclick="return validateTest()">Sign Up</button>  -->
 		</form>
+	</div>
 	</div>
 </body>
 </html>
