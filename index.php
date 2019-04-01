@@ -37,10 +37,10 @@
 		<link type="text/css" rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body> 
 		<div class="fb-header-base"></div>
 		<div class="fb-header">
-		<div id="img1" class="fb-header"><img src="icon.png" width="100" height="40"/></div>
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
 		<form name="loginForm" method="post" action="login-backend.php">
 			<div id="form1" class="fb-header"> 
 				<input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required>
@@ -54,7 +54,7 @@
 		
 		</div>
 		<div class="fb-body">
-		<div id="img2" class="fb-body"><img src="world.png" /></div>
+		<div id="img2" class="fb-body"><!-- <img src="world.png" /> --></div>
 		<div id="form3" class="fb-body">
 		<form name="signupform" method="post" action="signup-backend.php">
 				Email ID:  	&nbsp;&nbsp;<input type="text" name="email" id="email" size="40" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required><br>

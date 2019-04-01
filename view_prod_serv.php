@@ -1,9 +1,18 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
+
 <html>
 <head>
 	<title>Products & Services | FreshProduce</title>
 </head>
 <body>
-
 
 <?php
 require_once 'dbconnect.php';
@@ -34,23 +43,27 @@ $resultProd = mysqli_query($con, $queryProd);
 $resultServ = mysqli_query($con, $queryServ);
 
 echo "Products<br><br>";
-while($row = mysqli_fetch_assoc($resultProd)){
-    foreach($row as $cname => $cvalue){
-        echo "$cvalue\t";
-    }
-    echo "<br>";
-}
-echo "<br><br>";
+
+echo "<table>";
+	echo "<tr><th>Product ID</th><th>Product Name</th><th>Cost</th><th>Name</th><th>Phone No</th></tr>";
+	while($row = mysqli_fetch_assoc($resultProd)){
+		echo "<tr>";
+	    foreach($row as $cname => $cvalue){
+	        echo "<td>$cvalue</td>";
+	    }
+	    echo "</tr>";
+	}
+echo "</table><br><br>";
 ?>
 
 <form action="?" method="get">
 	<input type="text" name="f1_product_id" id="f1_product_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Product ID">
 	<input type="text" name="f1_product_name" id="f1_product_name" pattern="[A-Za-z0-9 ]{1,}" placeholder="Product Name">
-	<input type="text" name="f1_cost<" id="f1_cost<" pattern="[0-9]{1,8}" placeholder="Cost">
+	<input type="text" name="f1_cost<" id="f1_cost<" pattern="[0-9]{1,8}" placeholder="Max Cost">
 	<input type="text" name="f1_name" id="f1_name" pattern="[A-Za-z0-9 ]{1,}" placeholder="Seller Name">
 	<button type="submit">Filter Products</button>
 </form>
-<br><br>
+<br>
 	<input type="text" name="prod_id" id="prod_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Product ID" required>
 	<input type="text" name="qty1" id="qty1" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 	<button onclick="buyProd()">Buy Product</button>
@@ -59,13 +72,16 @@ echo "<br><br>";
 
 <?php
 echo "Services<br><br>";
-while($row = mysqli_fetch_assoc($resultServ)){
-    foreach($row as $cname => $cvalue){
-        echo "$cvalue\t";
-    }
-    echo "<br>";
-}
-echo "<br><br>";
+echo "<table>";
+	echo "<tr><th>Service ID</th><th>Service Name</th><th>Tier</th><th>Cost</th><th>Name</th><th>Phone No</th><th>Description</th></tr>";
+	while($row = mysqli_fetch_assoc($resultServ)){
+		echo "<tr>";
+	    foreach($row as $cname => $cvalue){
+	        echo "<td>$cvalue</td>";
+	    }
+	    echo "</tr>";
+	}
+echo "</table><br><br>";
 
 ?>
 
@@ -74,11 +90,11 @@ echo "<br><br>";
 	<input type="text" name="f2_service_id" id="f2_service_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Service ID">
 	<input type="text" name="f2_service_name" id="f2_service_name" pattern="[A-Za-z0-9 ]{1,}" placeholder="Service Name">
 	<input type="text" name="f2_tier" id="f2_tier" pattern="[A-Za-z]{1,}" placeholder="Service Tier">
-	<input type="text" name="f2_cost<" id="f2_cost<" pattern="[0-9]{1,8}" placeholder="Cost">
+	<input type="text" name="f2_cost<" id="f2_cost<" pattern="[0-9]{1,8}" placeholder="Max Cost">
 	<input type="text" name="f2_name" id="f2_name" pattern="[A-Za-z0-9 ]{1,}" placeholder="Seller Name">
 	<button type="submit">Filter Products</button>
 </form>
-<br><br>
+<br>
 	<input type="text" name="serv_id" id="serv_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Service ID" required>
 	<input type="text" name="qty2" id="qty2" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 	<button onclick="buyServ()">Buy Product</button>
