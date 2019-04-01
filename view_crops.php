@@ -1,9 +1,3 @@
-<html>
-<head>
-	<title>Stock | FreshProduce</title>
-</head>
-<body>
-
 <style>
 table, th, td {
   border: 1px solid black;
@@ -13,6 +7,28 @@ th, td {
 	padding: 5px;
 }
 </style>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Crops | FreshProduce</title>
+	<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="fb-header">
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<form name="loginForm" method="post" action="signout.php">
+			<div id="form1" class="fb-header"> 
+				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
+			</div>
+			<div id="form2" class="fb-header">
+				<!-- <input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required> -->
+			</div>
+				<input type="submit" class="submit1" value="Sign out" /> 
+		</form> 
+	</div>
+	<div class='afg'>
+
 
 <?php
 require_once 'dbconnect.php';
@@ -55,10 +71,11 @@ echo "</table><br><br>";
 	<input type="text" name="f_price<" id="f_price<" pattern="[0-9]{1,8}" placeholder="Price">
 	<button type="submit">Filter</button>
 </form>
-<br><br>
+<br>
 	<input type="text" name="stock_id" id="stock_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Stock ID" required>
 	<input type="text" name="qty" id="qty" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Quantity" required>
 	<button onclick="buyCrop()">Buy Crop</button>
+</div>
 </body>
 </html>
 

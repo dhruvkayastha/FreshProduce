@@ -14,6 +14,27 @@ th, td {
 }
 </style>
 
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Requirements | FreshProduce</title>
+	<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="fb-header">
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<form name="loginForm" method="post" action="signout.php">
+			<div id="form1" class="fb-header"> 
+				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
+			</div>
+			<div id="form2" class="fb-header">
+				<!-- <input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required> -->
+			</div>
+				<input type="submit" class="submit1" value="Sign out" /> 
+		</form> 
+	</div>
+	<div class='afg'>
+
 <?php
 	require_once 'dbconnect.php';
 
@@ -62,6 +83,9 @@ th, td {
 </form>
 <br><br>
 
-	<br><br><br><a href="farmer.php">Click here to go back</a>
+	<br><br><br>
+	<!-- <a href="farmer.php">Click here to go back</a> -->
+
+</div>
 </body>
 </html>

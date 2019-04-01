@@ -8,6 +8,27 @@ th, td {
 }
 </style>
 
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Requirements | FreshProduce</title>
+	<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="fb-header">
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<form name="loginForm" method="post" action="signout.php">
+			<div id="form1" class="fb-header"> 
+				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
+			</div>
+			<div id="form2" class="fb-header">
+				<!-- <input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required> -->
+			</div>
+				<input type="submit" class="submit1" value="Sign out" /> 
+		</form> 
+	</div>
+	<div class='afg'>
+
 <?php
 require_once 'dbconnect.php';
 $id = $_COOKIE["user_id"];
@@ -32,7 +53,6 @@ echo "<table>";
 echo "</table><br><br>";
 ?>
 
-<html>
 <script>
 	var xmlhttp = new XMLHttpRequest();
 
@@ -85,14 +105,21 @@ echo "</table><br><br>";
 	}
 </script>
 
-	<title>Inventory | FreshProduce</title>
+	<!-- <title>Inventory | FreshProduce</title> -->
 		<input type="text" name="crop_id" id="crop_id" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID" required>
 		<input type="text" name="quantity" id="quantity" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Quantity" required>
 		<button type="button" onclick="addReq()">Add</button>
 		<br>
-	<br><br><br>
+		<br>
 		<input type="text" name="crop_id_del" id="crop_id_del" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID to delete" required>
 		<button type="button" onclick="removeReq()">Remove Requirement</button>
 	<br><br>
+	<a href='view_crop_ids.php' target="_blank"><button type="button">View Crop Database</button></a>
+	<br><br>
+
 	<p name="result" id="result"></p>
+	</div>
+
+</body>
+
 </html>
