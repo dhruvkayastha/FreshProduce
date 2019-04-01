@@ -1,7 +1,7 @@
 body{
 	/*background-image: url("grid.png");*/
 	/*background: linear-gradient(rgba(255,255,212,.3), rgba(255,255,212,.3));*/
-	background-color: rgba(255,255,210,1);
+	background-color: rgba(255,255,220,1);
 	height:700px;
 }
 .fb-header-base{ 
@@ -41,27 +41,28 @@ input,select,textarea,button{
 	top:0px;
 }
 #form1{
-	left:850px;
+	left:950px;
 	height:22px;
 	width:180px;
-	top:35px;
+	top:50px;
 	font-family:'Product Sans';
     src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 	font-size:12px;
 }
 #form2{
-	left:1040px;
+	left:1140px;
 	height:22px;
-	width:250px;
-	top:35px;
+	width:180px;
+	top:50px;
 	font-family:'Product Sans';
     src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 	font-size:12px;
 }
 .submit1{
-	left:1230px;
-	top:35px;
-	position: fixed;
+	left:1330px;
+	top:50px;
+	/*position: fixed;*/
+	position: absolute;
 	height:30px;
 	width:50px;
 	cursor:pointer;
@@ -164,10 +165,11 @@ input,select,textarea,button{
 	width:15px;
 }
 .button2{
-	width:250px;
+	width:150px;
 	height:40px;
-	left:750px;
-	top:625px;
+	left:120px;
+	top:310px;
+	position: absolute;
 	background:green;
 	font-family:'Product Sans';
     src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
