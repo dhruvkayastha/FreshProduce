@@ -65,8 +65,9 @@
 				$rc = $stmt->execute();
 				$last_id = $con->insert_id;
 				$stmt->close();
+
 				$stmt2 = $con->prepare("INSERT INTO transcrop VALUES (?, ?, ?, ?, ?, ?)");
-				$stmt2->bind_param("iiiisd", $last_id, $_POST["stock_id"], $_POST["qty"], $crop_id, $best_before, $crop_price);
+				$stmt2->bind_param("iiiisd", $last_id, $_POST["stock_id"], $_POST["qty"], $crop_id_sold, $best_before, $crop_price);
 				$rc = $stmt2->execute();
 				$stmt2->close();
 
