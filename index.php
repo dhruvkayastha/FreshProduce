@@ -38,7 +38,8 @@
 	</head>
 
 	<body> 
-		<div class="fb-header-base"></div>
+		<!-- <div class="bg-img"></div> -->
+		<!-- <div class="fb-header-base"></div> -->
 		<div class="fb-header">
 		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
 		<form name="loginForm" method="post" action="login-backend.php">

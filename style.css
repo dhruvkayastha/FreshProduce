@@ -1,6 +1,7 @@
 body{
 	/*background-image: url("grid.png");*/
-	background: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("grid.png");
+	/*background: linear-gradient(rgba(255,255,212,.3), rgba(255,255,212,.3));*/
+	background-color: rgba(255,255,210,1);
 	height:700px;
 }
 .fb-header-base{ 
@@ -17,7 +18,7 @@ body{
 }
 .fb-header{
 	width:100%;
-	height:90px;
+	height:150px;
 	position:absolute;
 	background:#545543;
 
