@@ -1,6 +1,6 @@
-<?php 
+<?php
 require_once 'dbconnect.php';
-$id = $_COOKIE["user_id"]; 
+$id = $_COOKIE["user_id"];
 $query = "SELECT crop_id, crop_name, crop_type, quantity FROM requirements JOIN crops USING(crop_id)
 WHERE user_id=$id";
 
@@ -17,14 +17,36 @@ while($row = mysqli_fetch_assoc($result)){
 <html>
 <script>
 	var xmlhttp = new XMLHttpRequest();
-		
+
 	xmlhttp.onreadystatechange = function(){
 		if(this.readyState==4 && this.status==200) {
 			// var obj = JSON.parse(this.responseText);
 			var str = this.responseText;
-			document.getElementById("result").innerHTML = str;
+			function redirectPost(url, data) {
+			    var form = document.createElement('form');
+			    document.body.appendChild(form);
+			    form.method = 'post';
+			    form.action = url;
+			    for (var name in data) {
+			        var input = document.createElement('input');
+			        input.type = 'hidden';
+			        input.name = name;
+			        input.value = data[name];
+			        form.appendChild(input);
+			    }
+			    for (var name in data) {
+			        var input = document.createElement('input');
+			        input.type = 'hidden';
+			        input.name = name;
+			        input.value = data[name];
+			        form.appendChild(input);
+			    }
+		    	form.submit();
+			}
+
+			redirectPost('?', { });
 		}
-		
+
 	};
 
 	function addReq() {
@@ -51,8 +73,8 @@ while($row = mysqli_fetch_assoc($result)){
 		<button type="button" onclick="addReq()">Add</button>
 		<br>
 	<br><br><br>
-		<input type="text" name="crop_id_del" id="crop_id_del" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID to delete" required> 
+		<input type="text" name="crop_id_del" id="crop_id_del" pattern="[0-9]{1,8}" title="Enter numeric ID" placeholder="Crop ID to delete" required>
 		<button type="button" onclick="removeReq()">Remove Requirement</button>
 	<br><br>
-	<p name="result" id="result"></p>	
+	<p name="result" id="result"></p>
 </html>

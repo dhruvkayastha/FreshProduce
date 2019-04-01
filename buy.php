@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once 'dbconnect.php';
 
 	header('Content-Type: text/plain');
@@ -10,7 +10,7 @@
 
 	$date = date('Y-m-d');
 
-	$id = $_COOKIE['user_id']; 
+	$id = $_COOKIE['user_id'];
 	if($_POST["func"] == "crop")
 	{
 		$stmt = $con->prepare("SELECT * FROM stock WHERE stock_id=?");
@@ -20,14 +20,14 @@
 
 		if($result->num_rows != 1)
 		{
-			echo "Invalid Stock ID entered";	
+			echo "Invalid Stock ID entered";
 		}
-		else 
+		else
 		{
 			$row = $result->fetch_assoc();
 			if($row["quantity"] < $_POST["qty"])
 			{
-				echo "Demand is more than supply!";	
+				echo "Demand is more than supply!";
 			}
 			else
 			{
@@ -95,7 +95,7 @@
 					}
 				}
 
-				echo "Transaction Complete";				
+				echo "Transaction Complete";
 			}
 		}
 	}
@@ -108,9 +108,9 @@
 
 		if($result->num_rows != 1)
 		{
-			echo "Invalid Service ID entered";	
+			echo "Invalid Service ID entered";
 		}
-		else 
+		else
 		{
 			$row = $result->fetch_assoc();
 			$service_name = $row["service_name"];
@@ -140,9 +140,9 @@
 
 		if($result->num_rows != 1)
 		{
-			echo "Invalid Product ID entered";	
+			echo "Invalid Product ID entered";
 		}
-		else 
+		else
 		{
 			$row = $result->fetch_assoc();
 			$cost = $row["cost"]*$_POST["qty"];
