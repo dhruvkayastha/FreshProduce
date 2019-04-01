@@ -16,7 +16,7 @@ while($row = mysqli_fetch_assoc($resultProd)){
     }
     echo "<br>";
 }
-echo "<br><br>"
+echo "<br><br>";
 
 echo "Services<br><br>";
 while($row = mysqli_fetch_assoc($resultServ)){

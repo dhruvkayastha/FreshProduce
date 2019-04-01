@@ -147,7 +147,7 @@
 			$row = $result->fetch_assoc();
 			$cost = $row["cost"]*$_POST["qty"];
 			$seller_id = $row["user_id"];
-			$prod_name = $row["prod_name"];
+			$prod_name = $row["product_name"];
 			$prod_cost = $row["cost"];
 			$stmt->close();
 			$stmt = $con->prepare("INSERT INTO transaction (seller_id, buyer_id, trans_date, total_cost) VALUES (?, ?, ?, ?)");
