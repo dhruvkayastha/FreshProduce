@@ -1,21 +1,36 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
+
 <?php
 require_once 'dbconnect.php';
 
 $id = $_COOKIE["user_id"];
 
-$query = "SELECT service_id, service_name, tier, description, cost FROM service WHERE user_id=$id";
+$query = "SELECT service_id, service_name, tier, cost, description FROM service WHERE user_id=$id";
 
 $result = mysqli_query($con, $query);
 
 echo "Services<br><br>";
 if($result !== false)
 {
+	echo "<table>";
+	echo "<tr><th>Service ID</th><th>Service Name</th><th>Tier</th><th>Cost</th><th>Description</th></tr>";
 	while($row = mysqli_fetch_assoc($result)){
+		echo "<tr>";
 	    foreach($row as $cname => $cvalue){
-	        echo "$cvalue\t";
+	        echo "<td>$cvalue</td>";
 	    }
-	    echo "<br>";
+	    echo "</tr>";
 	}
+	echo "</table><br><br>";
+
 }
 echo "<br><br>";
 

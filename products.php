@@ -1,3 +1,13 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  /*border-collapse: collapse;*/
+}
+th, td {
+	padding: 5px;
+}
+</style>
+
 <?php
 require_once 'dbconnect.php';
 
@@ -10,14 +20,18 @@ $result = mysqli_query($con, $query);
 echo "Products<br><br>";
 if($result !== false)
 {
+	echo "<table>";
+	echo "<tr><th>Product ID</th><th>Product Name</th><th>Cost</th></tr>";
 	while($row = mysqli_fetch_assoc($result)){
+		echo "<tr>";
 	    foreach($row as $cname => $cvalue){
-	        echo "$cvalue\t";
+	        echo "<td>$cvalue</td>";
 	    }
-	    echo "<br>";
+	    echo "</tr>";
 	}
+	echo "</table><br><br>";
+
 }
-echo "<br><br>";
 
 ?>
 
