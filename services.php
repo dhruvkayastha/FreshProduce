@@ -8,6 +8,27 @@ th, td {
 }
 </style>
 
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Services | FreshProduce</title>
+	<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<div class="fb-header">
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<form name="loginForm" method="post" action="signout.php">
+			<div id="form1" class="fb-header"> 
+				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
+			</div>
+			<div id="form2" class="fb-header">
+				<!-- <input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required> -->
+			</div>
+				<input type="submit" class="submit1" value="Sign out" /> 
+		</form> 
+	</div>
+	<div class='afg'>
+
 <?php
 require_once 'dbconnect.php';
 
@@ -91,11 +112,6 @@ echo "<br><br>";
 	}
 </script>
 
-<html>
-<head>
-	<title>Services | FreshProduce</title>
-</head>
-<body>
 	<div>
 	<input type="text" name="serv_name" id="serv_name" placeholder="Service" required>
 	Tier:
@@ -121,6 +137,7 @@ echo "<br><br>";
 	<br><br>
 
 	<p name="result" id="result"></p>
+	</div>
 	</div>
 </body>
 </html>
