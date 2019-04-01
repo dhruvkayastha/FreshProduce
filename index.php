@@ -58,15 +58,15 @@
 		<div id="form3" class="fb-body">
 		<form name="signupform" method="post" action="signup-backend.php">
 				Email ID:  	&nbsp;&nbsp;<input type="text" name="email" id="email" size="40" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required><br>
-				Password:	&nbsp;<input type="password" name="pass" size="40" id="pass" onkeyup="pwChecker()" required><br>
+				Password:	&nbsp;&nbsp;<input type="password" name="pass" size="40" id="pass" onkeyup="pwChecker()" required><br>
 				Full Name: 		<input type="text" name="uname" size="40" id="uname" required><br>
-				User Type: <select name="usertype" required>
+				User Type: &nbsp;<select name="usertype" required>
 				  <option value="" disabled selected>--Select Type--</option>
 				  <option value="Farmer">Farmer</option>
 				  <option value="Retailer">Retailer</option>
 				  <option value="Producer">Producer</option>
 				</select><br>
-				Phone No: <input type="text" name="phone" id="phone" size="20" pattern="[0-9]{10}" maxlength="10" required><br>
+				Phone No: &nbsp;<input type="text" name="phone" id="phone" size="20" pattern="[0-9]{10}" maxlength="10" required><br>
 				<textarea rows="3" cols ="50" placeholder="Address" name="address" required></textarea><br>
 				<br>
 				<input type="submit" class="button2" value="Sign Up" />
