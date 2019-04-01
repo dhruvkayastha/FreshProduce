@@ -1,15 +1,3 @@
-<script type="text/javascript">
-	
-</script>
-
-<style type="text/css">
-	.afd{
-		top:200px;
-		left: 650px;
-		position: absolute;
-	}
-</style>
-
 <html>
 <head>
 	<meta charset="UTF-8">

@@ -8,6 +8,28 @@ th, td {
 }
 </style>
 
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Products | FreshProduce</title>
+	<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="fb-header">
+		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<form name="loginForm" method="post" action="signout.php">
+			<div id="form1" class="fb-header"> 
+				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
+			</div>
+			<div id="form2" class="fb-header">
+				<!-- <input type="password" placeholder="Password" name="pass" id="pass" onkeyup="pwChecker()" required> -->
+			</div>
+				<input type="submit" class="submit1" value="Sign out" /> 
+		</form> 
+	</div>
+	<div class='afg'>
+
 <?php
 require_once 'dbconnect.php';
 
@@ -94,11 +116,6 @@ if($result !== false)
 	}
 </script>
 
-<html>
-<head>
-	<title>Products | FreshProduce</title>
-</head>
-<body>
 	<input type="text" name="prod_name" id="prod_name" placeholder="Product" required>
 	<input type="text" name="cost" id="cost" pattern="[0-9]{1,8}" title="Must be numeric" placeholder="Cost in &#8377" required>
 	<button type="button" onclick="addProd()">Add Product</button>
@@ -111,7 +128,7 @@ if($result !== false)
 
 	<br><br>
 
-	<p name="result" id="result"></p>
+	</div>
 
 </body>
 </html>

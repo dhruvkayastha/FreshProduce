@@ -4,6 +4,17 @@ body{
 	background-color: rgba(255,255,220,1);
 	height:700px;
 }
+
+.afd{
+		top:200px;
+		left: 650px;
+		position: absolute;
+	}
+.afg{
+		top:200px;
+		position: absolute;
+	}
+
 .fb-header-base{ 
 	width:100%;
 	height:90px;
