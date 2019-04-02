@@ -44,7 +44,7 @@ body{
 input,select,textarea,button{
 	padding:5px 2px;
 	margin:8px;
-	border-radius: 5px;
+	border-radius: 3px;
 }
 #img1{
 	left:178px;
