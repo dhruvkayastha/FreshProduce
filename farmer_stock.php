@@ -16,7 +16,7 @@ th, td {
 </head>
 <body>
 <div class="fb-header">
-		<div id="img1" class="fb-header"><img src="icon4.jpeg" width="150" height="150"/></div>
+		<div id="img1" class="fb-header"><a href="farmer.php"><img border="0" alt="FreshProduce" src="icon4.jpeg" width="150" height="150"></a></div>
 		<form name="loginForm" method="post" action="signout.php">
 			<div id="form1" class="fb-header"> 
 				<!-- <input type="text" placeholder="Email" name="email" id="email" pattern = "[A-Za-z0-9_\-]+@[A-Za-z]+\.[A-Za-z]{2,}" required> -->
