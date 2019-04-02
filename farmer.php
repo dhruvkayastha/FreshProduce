@@ -26,7 +26,24 @@
 		</form> 
 	</div>
 	<div class='afs' align='center'>
-	<h2>Welcome Farmer!</h2>
+		<?php
+			require_once 'dbconnect.php';
+			$stmt = $con->prepare("SELECT * FROM user WHERE user_id=?");
+			$stmt->bind_param("i", $_COOKIE["user_id"]);
+			$rc = $stmt->execute();
+			$result = $stmt->get_result();
+
+			if($result->num_rows != 1)
+			{
+				echo "Invalid Stock ID entered";
+			}
+			else
+			{
+				$row = $result->fetch_assoc();
+				$username = $row["name"];
+				echo "<h2>Welcome $username!<h2>";
+			}
+		?>
 	<br>
 	<a href="farmer_stock.php"><button>Manage Inventory</button></a> <br>
 	<a href="view_prod_serv.php">

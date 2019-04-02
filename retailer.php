@@ -22,7 +22,24 @@
 		</form> 
 	</div>
 	<div class='afd' align='center'>
-	<h2>Welcome Retailer!</h2>
+		<?php
+			require_once 'dbconnect.php';
+			$stmt = $con->prepare("SELECT * FROM user WHERE user_id=?");
+			$stmt->bind_param("i", $_COOKIE["user_id"]);
+			$rc = $stmt->execute();
+			$result = $stmt->get_result();
+
+			if($result->num_rows != 1)
+			{
+				echo "Invalid Stock ID entered";
+			}
+			else
+			{
+				$row = $result->fetch_assoc();
+				$username = $row["name"];
+				echo "<h2>Welcome $username!<h2>";
+			}
+		?>
 	<br>
 	<a href="view_crops.php"><button>Buy Crops</button></a> <br>
 	<a href="retailer_requirement.php"><button>View Requirements</button></a> <br>
