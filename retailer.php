@@ -22,7 +22,7 @@
 		</form> 
 	</div>
 	<div class='afd' align='center'>
-	Welcome Retailer!
+	<h2>Welcome Retailer!</h2>
 	<br>
 	<a href="view_crops.php"><button>Buy Crops</button></a> <br>
 	<a href="retailer_requirement.php"><button>View Requirements</button></a> <br>

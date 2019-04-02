@@ -18,7 +18,7 @@
 		</form> 
 	</div>
 	<div class='afd' align='center'>
-	Welcome Producer!
+	<h2>Welcome Producer!</h2>
 	<br>
 	<a href="products.php"><button>Manage Products</button></a> <br>
 	<a href="services.php"><button>Manage Services</button></a> <br>

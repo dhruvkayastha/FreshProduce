@@ -9,11 +9,11 @@ body{
 		top:200px;
 		left: 650px;
 		position: absolute;
-	}
+}
 .afg{
 		top:200px;
 		position: absolute;
-	}
+}
 
 .fb-header-base{ 
 	width:100%;
@@ -44,6 +44,7 @@ body{
 input,select,textarea,button{
 	padding:5px 2px;
 	margin:8px;
+	border-radius: 5px;
 }
 #img1{
 	left:178px;
@@ -95,8 +96,6 @@ input,select,textarea,button{
 	top:90px;
 	width:100%;
 	height:645px;
-	
-
 }
 #intro1{
 	left:178px;
